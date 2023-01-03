@@ -82,6 +82,82 @@ const acc = (func, initial) => (...args) => {
   return acc
 }
 
+const accPartial = (func, start, end) => {
+  return (...args) => {
+    const accumulated = args
+      .slice(start, end)
+      .reduce((acc, val) => func(acc, val))
+    args.splice(start, end - start, accumulated)
+    return args
+  }
+}
+
+const accRecurse = (func, initial) => {
+  const x = (...args) => {
+    const [accumulator, ...rest] = args
+    if (!rest.length) {
+      return accumulator
+    }
+    return func(accumulator, x(...rest))
+  }
+  return (...args) => x(initial, ...args)
+}
+
+const fill = (num) => {
+  const array = []
+  for(let i = 0; i < num; i++) {
+    array.push(num)
+  }
+  return array
+}
+
+const fillRecurse = (num, array = []) => {
+  if(array.length === num) return array
+  array.push(num)
+  return fillRecurse(num, array)
+}
+
+const set = (...args) => {
+  const array = []
+  args.forEach(arg => {
+    if(!array.includes(arg)) return array.push(arg)
+  })
+  return array
+}
+
+const identityf = (arg) => () => arg
+
+const addf = a => b => a + b
+
+const liftf = (func) => a => b => func(a, b)
+
+const pure = (x , y) => {
+  let z
+  const impure = (x) => {
+    y++
+    z = x * y
+  }
+
+  impure(x)
+  return [y, z]
+}
+
+const curryb = (func, a) => b => func(a, b)
+
+const curry = (func, ...outer) => (...inner) => {
+  return func(...outer, ...inner)
+}
+
+const inc = (num) => add(num, 1)
+
+const twiceUnary = (func) => a => func(a, a)
+
+const doubl = (num) => twiceUnary(addb)(num)
+
+const square = (num) => twiceUnary(mulb)(num)
+
+const twice = (func) => (...args) => func(...args, ...args)
+
 module.exports = {
   identity,
   addb,
@@ -100,22 +176,22 @@ module.exports = {
   maxRecurse,
   not,
   acc,
-  // accPartial,
-  // accRecurse,
-  // fill,
-  // fillRecurse,
-  // set,
-  // identityf,
-  // addf,
-  // liftf,
-  // pure,
-  // curryb,
-  // curry,
-  // inc,
-  // twiceUnary,
-  // doubl,
-  // square,
-  // twice,
+  accPartial,
+  accRecurse,
+  fill,
+  fillRecurse,
+  set,
+  identityf,
+  addf,
+  liftf,
+  pure,
+  curryb,
+  curry,
+  inc,
+  twiceUnary,
+  doubl,
+  square,
+  twice,
   // reverseb,
   // reverse,
   // composeuTwo,
