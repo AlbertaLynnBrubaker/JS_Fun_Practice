@@ -196,16 +196,16 @@ describe('JS_Fun_Practice', function() {
             assert.equal(sol.twice(sol.add)(1,2,4), 14);
         });
     });
-//     describe('reverseb(binary)', function() {
-//         it(`reverses the arguments of a binary function`, function() {
-//             assert.equal(sol.reverseb(sol.subb)(3,2), -1);
-//         });
-//     });
-//     describe('reverse(func)', function() {
-//         it(`is a reverse function generalized for any amount of arguments`, function() {
-//             assert.equal(sol.reverse(sol.sub)(1,2,4), 1);
-//         });
-//     });
+    describe('reverseb(binary)', function() {
+        it(`reverses the arguments of a binary function`, function() {
+            assert.equal(sol.reverseb(sol.subb)(3,2), -1);
+        });
+    });
+    describe('reverse(func)', function() {
+        it(`is a reverse function generalized for any amount of arguments`, function() {
+            assert.equal(sol.reverse(sol.sub)(1,2,4), 1);
+        });
+    });
 //     describe('composeuTwo(unary1,unary2)', function() {
 //         it(`takes two unary functions and returns a unary function that calls them
 //         both`, function() {

@@ -158,6 +158,14 @@ const square = (num) => twiceUnary(mulb)(num)
 
 const twice = (func) => (...args) => func(...args, ...args)
 
+const reverseb = (func) => (a, b) => func(b, a)
+
+const reverse = (func) => (...args) => {
+  const reversed = []
+  while(args.length !== 0) reversed.push(args.pop())
+  return func(...reversed)
+}
+
 module.exports = {
   identity,
   addb,
@@ -192,8 +200,8 @@ module.exports = {
   doubl,
   square,
   twice,
-  // reverseb,
-  // reverse,
+  reverseb,
+  reverse,
   // composeuTwo,
   // composeu,
   // composeb,
