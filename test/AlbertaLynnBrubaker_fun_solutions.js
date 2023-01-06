@@ -206,35 +206,35 @@ describe('JS_Fun_Practice', function() {
             assert.equal(sol.reverse(sol.sub)(1,2,4), 1);
         });
     });
-//     describe('composeuTwo(unary1,unary2)', function() {
-//         it(`takes two unary functions and returns a unary function that calls them
-//         both`, function() {
-//             assert.equal(sol.composeuTwo(sol.doubl, sol.square)(5), 100);
-//         });
-//     });
-//     describe('composeu(...funcs)', function() {
-//         it(`is a compose function generalized for any amount of arguments`, function() {
-//             assert.equal(sol.composeu(sol.doubl, sol.square, sol.identity,
-//             sol.curry(sol.add, 1, 2))(5), 103);
-//         });
-//     });
-//     describe('composeb(binary1,binary2)', function() {
-//         it(`takes two binary functions and returns a function that calls them both`, function() {
-//             assert.equal(sol.composeb(sol.addb, sol.mulb)(2,3,7), 35);
-//         });
-//     });
-//     describe('composeTwo(func1,func2)', function() {
-//         it(`takes two functions and returns a function that calls them both`, function() {
-//             assert.equal(sol.composeTwo(sol.add, sol.square)(2,3,7), 144);
-//         });
-//     });
-//     describe('compose(...funcs)', function() {
-//         it(`takes any amount of functions and returns a function that takes any amount of
-//         arguments and gives them to the first function, then that result to the
-//         second function and so on`, function() {
-//             assert.equal(sol.compose(sol.add, sol.doubl, sol.fill, sol.max)(0,1,2), 6);
-//         });
-//     });
+    describe('composeuTwo(unary1,unary2)', function() {
+        it(`takes two unary functions and returns a unary function that calls them
+        both`, function() {
+            assert.equal(sol.composeuTwo(sol.doubl, sol.square)(5), 100);
+        });
+    });
+    describe('composeu(...funcs)', function() {
+        it(`is a compose function generalized for any amount of arguments`, function() {
+            assert.equal(sol.composeu(sol.doubl, sol.square, sol.identity,
+            sol.curry(sol.add, 1, 2))(5), 103);
+        });
+    });
+    describe('composeb(binary1,binary2)', function() {
+        it(`takes two binary functions and returns a function that calls them both`, function() {
+            assert.equal(sol.composeb(sol.addb, sol.mulb)(2,3,7), 35);
+        });
+    });
+    describe('composeTwo(func1,func2)', function() {
+        it(`takes two functions and returns a function that calls them both`, function() {
+            assert.equal(sol.composeTwo(sol.add, sol.square)(2,3,7), 144);
+        });
+    });
+    describe('compose(...funcs)', function() {
+        it(`takes any amount of functions and returns a function that takes any amount of
+        arguments and gives them to the first function, then that result to the
+        second function and so on`, function() {
+            assert.equal(sol.compose(sol.add, sol.doubl, sol.fill, sol.max)(0,1,2), 6);
+        });
+    });
 //     describe('limitb(binary, lmt)', function() {
 //         it(`allows a binary function to be called a limited number of times`, function() {
 //             let addlmtb = sol.limitb(sol.addb, 1);

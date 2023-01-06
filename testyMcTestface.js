@@ -1,9 +1,14 @@
-const { sub } = require('./Solutions/AlbertaLynnBrubaker_fun_solutions')
+const { add, doubl, fill, max } = require('./Solutions/AlbertaLynnBrubaker_fun_solutions')
 
-const reverse = (func) => (...args) => {
-  const reversed = []
-  while(args.length !== 0) reversed.push(args.pop())
-  return func(...reversed)
+const compose = (...funcs) => (...args) => {
+  let res = [...args]
+  funcs.forEach(func => {
+    if(Array.isArray(res)) res = func(...res)
+    else res = func(res)
+  })
+  return res
 }
 
-console.log(reverse(sub)(1, 2, 4))
+const f = compose(add, doubl, fill, max)
+
+console.log(f(0, 1, 2))

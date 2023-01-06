@@ -166,6 +166,26 @@ const reverse = (func) => (...args) => {
   return func(...reversed)
 }
 
+const composeuTwo = (func1, func2) => (num) => func2(func1(num))
+
+const composeu = (...funcs) => (num) => {
+  funcs.forEach(func => num = func(num))
+  return num
+}
+
+const composeb = (func1, func2) => (a, b, c) => func2(func1(a, b), c)
+
+const composeTwo = (func1, func2) => (...args) => func2(func1(...args))
+
+const compose = (...funcs) => (...args) => {
+  let res = [...args]
+  funcs.forEach(func => {
+    if(Array.isArray(res)) res = func(...res)
+    else res = func(res)
+  })
+  return res
+}
+
 module.exports = {
   identity,
   addb,
@@ -202,11 +222,11 @@ module.exports = {
   twice,
   reverseb,
   reverse,
-  // composeuTwo,
-  // composeu,
-  // composeb,
-  // composeTwo,
-  // compose,
+  composeuTwo,
+  composeu,
+  composeb,
+  composeTwo,
+  compose,
   // limitb,
   // limit,
   // genFrom,
