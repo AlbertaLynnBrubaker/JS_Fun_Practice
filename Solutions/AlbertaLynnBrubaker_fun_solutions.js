@@ -186,6 +186,82 @@ const compose = (...funcs) => (...args) => {
   return res
 }
 
+const limitb = (func, limit) => (a, b) => {
+  if(limit-- >= 1) return func(a, b)
+}
+
+const limit = (func, limit) => (...args) => {
+  if(limit-- >= 1) return func(...args)
+}
+
+function* genFrom(x) {
+  while(true) {
+    yield x++
+  }
+}
+
+function* genFromTo(start, end) {
+  while(start < end) {
+    yield start++
+  }
+}
+
+const counter = (i) => {
+  const obj = {
+    up() {
+      i++
+      return i
+    },
+    down() {
+      i--
+      return i
+    }
+  }
+  return obj
+}
+
+const revocableb = (func) => {
+  let disabled = false
+  const obj = {
+    invoke(a, b) {
+      if(!disabled) {
+        return func(a, b)
+      } else {
+        return undefined
+      }
+    },
+    revoke() {
+      disabled = !disabled    
+    }
+  }
+  return obj
+}
+
+const revocable = (func) => {
+  let disabled = false
+  const obj = {
+    invoke(...args) {
+      if(!disabled) {
+        return func(...args)
+      } else {
+        return undefined
+      }
+    },
+    revoke() {
+      disabled = !disabled
+    }
+  }
+  return obj
+}
+
+const extract = (array, property) => {
+  const extracted = []
+  array.forEach(obj => {
+    extracted.push(obj[property])
+  })
+  return extracted
+}
+
 module.exports = {
   identity,
   addb,
@@ -227,11 +303,11 @@ module.exports = {
   composeb,
   composeTwo,
   compose,
-  // limitb,
-  // limit,
-  // genFrom,
+  limitb,
+  limit,
+  genFrom,
   // genTo,
-  // genFromTo,
+  genFromTo,
   // elementGen,
   // element,
   // collect,
@@ -243,10 +319,10 @@ module.exports = {
   // gensymf,
   // gensymff,
   // fibonaccif,
-  // counter,
-  // revocableb,
-  // revocable,
-  // extract,
+  counter,
+  revocableb,
+  revocable,
+  extract,
   // m,
   // addmTwo,
   // addm,

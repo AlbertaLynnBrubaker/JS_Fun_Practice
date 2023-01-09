@@ -235,68 +235,68 @@ describe('JS_Fun_Practice', function() {
             assert.equal(sol.compose(sol.add, sol.doubl, sol.fill, sol.max)(0,1,2), 6);
         });
     });
-//     describe('limitb(binary, lmt)', function() {
-//         it(`allows a binary function to be called a limited number of times`, function() {
-//             let addlmtb = sol.limitb(sol.addb, 1);
-//             assert.equal(addlmtb(3,4), 7);
-//             assert.equal(addlmtb(3,5), undefined);
-//         });
-//     });
-//     describe('limit(func, lmt)', function() {
-//         it(`allows a function that is generalized for any amount of arguments
-//         to be called a limited number of times`, function() {
-//             let addlmt = sol.limit(sol.add, 1);
-//             assert.equal(addlmt(1,2,4), 7);
-//             assert.equal(addlmt(3,5,9,2), undefined);
-//         });
-//     });
-//     describe('genFrom(x)', function() {
-//         it(`produces a generator that will produces a series of values`, function() {
-//             let index = sol.genFrom(0);
-//             assert.equal(index.next().value, 0);
-//             assert.equal(index.next().value, 1);
-//             assert.equal(index.next().value, 2);
-//         });
-//     });
-//     describe('genTo(x)', function() {
-//         it(`takes a generator and an end limit, and returns a generator that will
-//         produce numbers up to that limit`, function() {
-//             let index = sol.genTo(sol.genFrom(1), 3);
-//             assert.equal(index.next().value, 1);
-//             assert.equal(index.next().value, 2);
-//             assert.equal(index.next().value, undefined);
-//         });
-//     });
-//     describe('genFromTo(x)', function() {
-//         it(`produces a generator that will produce values in a range`, function() {
-//             let index = sol.genFromTo(0, 3);
-//             assert.equal(index.next().value, 0);
-//             assert.equal(index.next().value, 1);
-//             assert.equal(index.next().value, 2);
-//             assert.equal(index.next().value, undefined);
-//         });
-//     });
-//     describe('elementGen(array,gen)', function() {
-//         it(`takes an array and a generator and returns a generator that will produce
-//         elements from the array`, function() {
-//             let ele = sol.elementGen(['a','b','c','d'], sol.genFromTo(1,3));
-//             assert.equal(ele.next().value, 'b');
-//             assert.equal(ele.next().value, 'c');
-//             assert.equal(ele.next().value, undefined);
-//         });
-//     });
-//     describe('element(array,gen)', function() {
-//         it(`is a modified elementGen function so that the generator argument is optional.
-//         If a generator is not provided, then each of the elements of the array will
-//         be produced.`, function() {
-//             let ele = sol.element(['a','b','c','d']);
-//             assert.equal(ele.next().value, 'a');
-//             assert.equal(ele.next().value, 'b');
-//             assert.equal(ele.next().value, 'c');
-//             assert.equal(ele.next().value, 'd');
-//             assert.equal(ele.next().value, undefined);
-//         });
-//     });
+    describe('limitb(binary, lmt)', function() {
+        it(`allows a binary function to be called a limited number of times`, function() {
+            let addlmtb = sol.limitb(sol.addb, 1);
+            assert.equal(addlmtb(3,4), 7);
+            assert.equal(addlmtb(3,5), undefined);
+        });
+    });
+    describe('limit(func, lmt)', function() {
+        it(`allows a function that is generalized for any amount of arguments
+        to be called a limited number of times`, function() {
+            let addlmt = sol.limit(sol.add, 1);
+            assert.equal(addlmt(1,2,4), 7);
+            assert.equal(addlmt(3,5,9,2), undefined);
+        });
+    });
+    describe('genFrom(x)', function() {
+        it(`produces a generator that will produces a series of values`, function() {
+            let index = sol.genFrom(0);
+            assert.equal(index.next().value, 0);
+            assert.equal(index.next().value, 1);
+            assert.equal(index.next().value, 2);
+        });
+    });
+    // describe('genTo(x)', function() {
+    //     it(`takes a generator and an end limit, and returns a generator that will
+    //     produce numbers up to that limit`, function() {
+    //         let index = sol.genTo(sol.genFrom(1), 3);
+    //         assert.equal(index.next().value, 1);
+    //         assert.equal(index.next().value, 2);
+    //         assert.equal(index.next().value, undefined);
+    //     });
+    // });
+    describe('genFromTo(x)', function() {
+        it(`produces a generator that will produce values in a range`, function() {
+            let index = sol.genFromTo(0, 3);
+            assert.equal(index.next().value, 0);
+            assert.equal(index.next().value, 1);
+            assert.equal(index.next().value, 2);
+            assert.equal(index.next().value, undefined);
+        });
+    });
+    // describe('elementGen(array,gen)', function() {
+    //     it(`takes an array and a generator and returns a generator that will produce
+    //     elements from the array`, function() {
+    //         let ele = sol.elementGen(['a','b','c','d'], sol.genFromTo(1,3));
+    //         assert.equal(ele.next().value, 'b');
+    //         assert.equal(ele.next().value, 'c');
+    //         assert.equal(ele.next().value, undefined);
+    //     });
+    // });
+    // describe('element(array,gen)', function() {
+    //     it(`is a modified elementGen function so that the generator argument is optional.
+    //     If a generator is not provided, then each of the elements of the array will
+    //     be produced.`, function() {
+    //         let ele = sol.element(['a','b','c','d']);
+    //         assert.equal(ele.next().value, 'a');
+    //         assert.equal(ele.next().value, 'b');
+    //         assert.equal(ele.next().value, 'c');
+    //         assert.equal(ele.next().value, 'd');
+    //         assert.equal(ele.next().value, undefined);
+    //     });
+    // });
 //     describe('collect(gen,array)', function() {
 //         it(`takes a generator and an array and produces a function that will collect the
 //         results in the array`, function() {
@@ -395,44 +395,44 @@ describe('JS_Fun_Practice', function() {
 //             assert.equal(fib.next().value, 8);
 //         });
 //     });
-//     describe('counter(i)', function() {
-//         it(`returns an object containing two functions that implement an up/down counter,
-//         hiding the counter`, function() {
-//             let obj = sol.counter(10);
-//             let { up, down } = obj;
-//             assert.equal(up(), 11);
-//             assert.equal(down(), 10);
-//             assert.equal(down(), 9);
-//             assert.equal(up(), 10);
-//         });
-//     });
-//     describe('revocableb(binary)', function() {
-//         it(`takes a binary function, and returns an object containing an invoke function
-//         that can invoke a function and a revoke function that disables the invoke
-//         function`, function() {
-//             let rev = sol.revocableb(sol.addb);
-//             assert.equal(rev.invoke(3,4), 7);
-//             rev.revoke();
-//             assert.equal(rev.invoke(5,7), undefined);
-//         });
-//     });
-//     describe('revocable(binary)', function() {
-//         it(`takes a function that is generalized for any amount of arguments, and returns
-//         an object containing an invoke function that can invoke a function and a revoke
-//         function that disables the invoke function`, function() {
-//             let rev = sol.revocable(sol.add);
-//             assert.equal(rev.invoke(3,4), 7);
-//             rev.revoke();
-//             assert.equal(rev.invoke(5,7), undefined);
-//         });
-//     });
-//     describe('extract(array,prop)', function() {
-//         it(`takes an array of objects and an object property name and converts each object
-//         in the array by extracting that property`, function() {
-//             let people = [{ name: 'john' }, { name: 'bob' }]
-//             expect(sol.extract(people, 'name')).to.deep.equal(['john', 'bob']);
-//         });
-//     });
+    describe('counter(i)', function() {
+        it(`returns an object containing two functions that implement an up/down counter,
+        hiding the counter`, function() {
+            let obj = sol.counter(10);
+            let { up, down } = obj;
+            assert.equal(up(), 11);
+            assert.equal(down(), 10);
+            assert.equal(down(), 9);
+            assert.equal(up(), 10);
+        });
+    });
+    describe('revocableb(binary)', function() {
+        it(`takes a binary function, and returns an object containing an invoke function
+        that can invoke a function and a revoke function that disables the invoke
+        function`, function() {
+            let rev = sol.revocableb(sol.addb);
+            assert.equal(rev.invoke(3,4), 7);
+            rev.revoke();
+            assert.equal(rev.invoke(5,7), undefined);
+        });
+    });
+    describe('revocable(binary)', function() {
+        it(`takes a function that is generalized for any amount of arguments, and returns
+        an object containing an invoke function that can invoke a function and a revoke
+        function that disables the invoke function`, function() {
+            let rev = sol.revocable(sol.add);
+            assert.equal(rev.invoke(3,4), 7);
+            rev.revoke();
+            assert.equal(rev.invoke(5,7), undefined);
+        });
+    });
+    describe('extract(array,prop)', function() {
+        it(`takes an array of objects and an object property name and converts each object
+        in the array by extracting that property`, function() {
+            let people = [{ name: 'john' }, { name: 'bob' }]
+            expect(sol.extract(people, 'name')).to.deep.equal(['john', 'bob']);
+        });
+    });
 //     describe('m(value,source)', function() {
 //         it(`takes a value and an optional source string and returns them in an object`, function() {
 //             expect(sol.m(1)).to.deep.equal({value: 1, source: "1"});
