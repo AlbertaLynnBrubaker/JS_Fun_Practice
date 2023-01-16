@@ -262,6 +262,55 @@ const extract = (array, property) => {
   return extracted
 }
 
+const m = (value, source = value.toString()) => obj = {value, source}
+
+
+const addmTwo = (m1, m2) => obj = {value: m1.value + m2.value, source: `(${m1.source}+${m2.source})`}
+
+const addm = (...ms) => {
+  let sum =  0
+  let str = ms[0].source
+  ms.forEach(m => {
+    sum = sum + m.value
+    if(m !== ms[0]) str = `${str}+${m.source}`
+  })
+  return obj = {
+    value: sum,
+    source: `(${str})`
+  }
+}
+
+// const addm = (...ms) => { ---> the Big O is 4n//2n
+//   let values = ms.map(m => m.value)
+//   let sources = ms.map(m => m.source)
+//   return m(add(...values), `(${sources.join('+')})`)
+// }
+
+// const addm = (...ms) => { ---> the Big O is 3n//2n... my function above is ugly, but it runs in n and has a space of O(1)
+//   let values = []
+//   let sources = []
+//   ms.forEach(m => {
+//     values.push(m.value)
+//     sources.push(m.source)
+//   })
+//   return obj = {value: add(...values), source: `(${sources.join('+')})`}
+// }
+
+const liftmbM = (func, str) => (m1, m2) => {
+  return obj = {value: func(m1.value, m2.value), source: `(${m1.source}${str}${m2.source})`}
+}
+
+const liftmb = (func, str) => (m1, m2) => {
+  if(Number(m1)) m1 = m(m1)
+  if(Number(m2)) m2 = m(m2)
+  return obj = {value: func(m1.value, m2.value), source: `(${m1.source}${str}${m2.source})`}
+}
+
+const liftm = (func, str) => (...args) => {
+  const values = args.map(m => Number(m) ? m : m.value)
+  return obj = {value: func(...values), source: `(${values.join(str)})`}
+}
+
 module.exports = {
   identity,
   addb,
@@ -323,12 +372,12 @@ module.exports = {
   revocableb,
   revocable,
   extract,
-  // m,
-  // addmTwo,
-  // addm,
-  // liftmbM,
-  // liftmb,
-  // liftm,
+  m,
+  addmTwo,
+  addm,
+  liftmbM,
+  liftmb,
+  liftm,
   // exp,
   // expn,
   // addg,
